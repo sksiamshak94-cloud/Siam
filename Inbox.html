@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SM TOP UP</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+        }
+        header {
+            background: #00457c;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .container {
+            padding: 20px;
+            max-width: 600px;
+            margin: auto;
+        }
+        .video-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .video-card h3 {
+            margin-bottom: 10px;
+            color: #00457c;
+        }
+        .btn {
+            background: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>SM TOP UP</header>
+
+    <!-- সাবস্ক্রিপশন ধাপ -->
+    <div id="sub-step" class="container">
+        <h2>ভিডিওটি আনলক করতে নিচের চ্যানেলগুলো সাবস্ক্রাইব/ফলো করুন।</h2>
+        <br>
+        <div class="video-card">
+            <h3>১. YouTube চ্যানেল সাবস্ক্রাইব করুন</h3>
+            <button class="btn" onclick="openChannel('https://youtube.com/@Sm-topup')">Subscribe</button>
+        </div>
+        <div class="video-card">
+            <h3>২. Facebook পেজ ফলো করুন</h3>
+            <button class="btn" onclick="openChannel('https://facebook.com')">Follow</button>
+        </div>
+        <br>
+        <button class="btn" style="width: 100%;" onclick="checkUnlock()">সবগুলো সম্পূর্ণ হলে এখানে ক্লিক করুন</button>
+    </div>
+
+    <!-- ভিডিও প্লেয়ার (লক করা থাকবে) -->
+    <div id="video-player" class="container" style="display: none;">
+        <h2>Free Fire New Update Gameplay</h2>
+        <div class="video-card">
+            <p>অভিনন্দন! আপনার ভিডিওটি আনলক হয়েছে।</p>
+        </div>
+    </div>
+
+    <script>
+        function openChannel(link) {
+            window.open(link, '_blank');
+            localStorage.setItem('subscribed', 'true');
+        }
+
+        function checkUnlock() {
+            if (localStorage.getItem('subscribed') === 'true') {
+                document.getElementById('sub-step').style.display = 'none';
+                document.getElementById('video-player').style.display = 'block';
+            } else {
+                alert('অনুগ্রহ করে প্রথমে চ্যানেল বা পেজটি সাবস্ক্রাইব/ফলো করুন।');
+            }
+        }
+    </script>
+
+</body>
+</html>
